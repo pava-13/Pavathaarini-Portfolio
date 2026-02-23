@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pavathaarini | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:#1e293b;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 80px;
+    background:white;
+    position:sticky;
+    top:0;
+    box-shadow:0 2px 15px rgba(0,0,0,0.05);
+}
+
+nav h2{
+    color:#4f46e5;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#1e293b;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#4f46e5;
+}
+
+.hero{
+    text-align:center;
+    padding:120px 20px;
+    animation:fadeIn 1.2s ease-in;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero span{
+    color:#4f46e5;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:25px;
+    color:#475569;
+}
+
+.btn{
+    padding:12px 25px;
+    background:#4f46e5;
+    color:white;
+    border-radius:30px;
+    text-decoration:none;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.btn:hover{
+    background:#4338ca;
+    transform:translateY(-3px);
+}
+
+section{
+    padding:80px 120px;
+}
+
+.section-title{
+    font-size:30px;
+    margin-bottom:30px;
+    color:#4f46e5;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.05);
+    margin-bottom:25px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:white;
+    margin-top:40px;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Pavathaarini</h2>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <h1>Hello, I'm <span>Pavathaarini</span> 👋</h1>
+    <p>Computer Science Student | Python Enthusiast | Tech Explorer</p>
+    <a href="resume.pdf" class="btn" download>Download Resume</a>
+</div>
+
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="card">
+        <p>
+            I am a Computer Science student passionate about building meaningful
+            academic projects and improving my technical knowledge. I enjoy
+            learning new technologies and applying concepts practically.
+        </p>
+    </div>
+</section>
+
+<section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="card">
+        <p><strong>Languages:</strong> Python, SQL, HTML, CSS</p>
+        <p><strong>Frameworks:</strong> Flask</p>
+        <p><strong>Tools:</strong> Git, GitHub</p>
+    </div>
+</section>
+
+<section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="card">
+        <h3>Secure Mini Payment API</h3>
+        <p>
+            Developed a web-based payment API using Flask with authentication
+            and database integration. Focused on building a structured backend system.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Bloom’s Taxonomy Based Learning Model</h3>
+        <p>
+            Academic mini project based on Bloom’s Taxonomy framework.
+            Designed structured learning levels to enhance understanding,
+            analysis, and critical thinking skills among students.
+        </p>
+    </div>
+
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="card">
+        <p>Email: pavathaariniarunachalam13@gmail.com</p>
+        <p>Location: Tamil Nadu</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 Pavathaarini | College Portfolio
+</footer>
+
+</body>
+</html>
