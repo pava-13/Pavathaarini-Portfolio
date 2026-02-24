@@ -1,206 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pavathaarini A | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavathaarini A | Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#eef2ff',
+                            DEFAULT: '#4f46e5',
+                            dark: '#4338ca',
+                            darker: '#3730a3'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-    scroll-behavior:smooth;
-}
-
-body{
-    background:linear-gradient(135deg,#eef2ff,#f8fafc);
-    color:#1e293b;
-}
-
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 80px;
-    background:white;
-    position:sticky;
-    top:0;
-    box-shadow:0 2px 15px rgba(0,0,0,0.05);
-}
-
-nav h2{
-    color:#4f46e5;
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:30px;
-}
-
-nav ul li a{
-    text-decoration:none;
-    color:#1e293b;
-    font-weight:500;
-    transition:0.3s;
-}
-
-nav ul li a:hover{
-    color:#4f46e5;
-}
-
-.hero{
-    text-align:center;
-    padding:120px 20px;
-    animation:fadeIn 1.2s ease-in;
-}
-
-.hero h1{
-    font-size:42px;
-    margin-bottom:15px;
-}
-
-.hero span{
-    color:#4f46e5;
-}
-
-.hero p{
-    font-size:18px;
-    margin-bottom:25px;
-    color:#475569;
-}
-
-.btn{
-    padding:12px 25px;
-    background:#4f46e5;
-    color:white;
-    border-radius:30px;
-    text-decoration:none;
-    transition:0.3s;
-    display:inline-block;
-}
-
-.btn:hover{
-    background:#4338ca;
-    transform:translateY(-3px);
-}
-
-section{
-    padding:80px 120px;
-}
-
-.section-title{
-    font-size:30px;
-    margin-bottom:30px;
-    color:#4f46e5;
-}
-
-.card{
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.05);
-    margin-bottom:25px;
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-}
-
-footer{
-    text-align:center;
-    padding:25px;
-    background:white;
-    margin-top:40px;
-}
-
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-}
-</style>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-purple-500 dark:from-indigo-400 dark:to-purple-400;
+            }
+            .glass-card {
+                @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none;
+            }
+            .nav-link {
+                @apply relative font-medium text-slate-600 dark:text-slate-300 hover:text-brand dark:hover:text-indigo-400 transition-colors duration-300;
+            }
+            .nav-link::after {
+                @apply content-[''] absolute left-0 -bottom-1 w-0 h-0.5 bg-brand dark:bg-indigo-400 transition-all duration-300;
+            }
+            .nav-link:hover::after {
+                @apply w-full;
+            }
+            .section-heading {
+                @apply text-3xl md:text-4xl font-bold mb-10 text-slate-800 dark:text-white flex items-center gap-3;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            @apply bg-slate-100 dark:bg-slate-900;
+        }
+        ::-webkit-scrollbar-thumb {
+            @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            @apply bg-brand dark:bg-indigo-500;
+        }
+    </style>
 </head>
+<body class="font-poppins bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 transition-colors duration-300 selection:bg-brand selection:text-white">
 
-<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card border-b-0 rounded-none transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-brand dark:text-indigo-400 tracking-wide flex items-center gap-2">
+                <i class="ph-fill ph-code text-2xl"></i>
+                PAVATHAARINI
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex items-center gap-8">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle Dark Mode">
+                        <i id="theme-icon" class="ph ph-moon text-xl text-slate-700 dark:text-slate-300"></i>
+                    </button>
+                </li>
+            </ul>
 
-<nav>
-    <h2>Pavathaarini A</h2>
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+            <!-- Mobile Menu Button & Theme Toggle -->
+            <div class="flex items-center gap-4 md:hidden">
+                <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle Dark Mode">
+                    <i id="theme-icon-mobile" class="ph ph-moon text-xl text-slate-700 dark:text-slate-300"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-<div class="hero">
-    <h1>Hello, I'm <span>Pavathaarini A</span> 👋</h1>
-    <p>Information Technology Student | Tech Enthusiast</p>
-    <a href="resume.pdf" class="btn" download>Download Resume</a>
-</div>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-brand/20 dark:bg-brand/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 dark:bg-purple-500/10 rounded-full blur-3xl -z-10"></div>
 
-<section id="about">
-    <h2 class="section-title">About Me</h2>
-    <div class="card">
-        <p>
-            I am an Information Technology student passionate about building meaningful
-            academic projects and continuously improving my technical skills.
-            I am particularly interested in software development and cybersecurity.
+        <div class="max-w-4xl mx-auto text-center opacity-0 animate-fade-in-up">
+            <span class="inline-block py-1 px-3 rounded-full bg-brand/10 dark:bg-indigo-500/20 text-brand dark:text-indigo-300 text-sm font-semibold mb-6">
+                Information Technology Student
+            </span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-slate-900 dark:text-white leading-tight">
+                Hello, I'm <br/>
+                <span class="text-gradient">Pavathaarini A</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                A passionate tech enthusiast dedicated to building meaningful academic projects, focusing on software development and cybersecurity.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="px-8 py-3.5 bg-brand hover:bg-brand-dark text-white rounded-full font-medium transition-all transform hover:-translate-y-1 shadow-lg shadow-brand/30 flex items-center gap-2 w-full sm:w-auto justify-center">
+                    Let's Connect <i class="ph ph-paper-plane-tilt"></i>
+                </a>
+                <a href="resume.pdf" download class="px-8 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand dark:hover:border-indigo-500 text-slate-700 dark:text-slate-300 rounded-full font-medium transition-all transform hover:-translate-y-1 w-full sm:w-auto justify-center flex items-center gap-2">
+                    Download Resume <i class="ph ph-download-simple"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-white dark:bg-slate-800/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-heading">
+                <i class="ph-duotone ph-user text-brand dark:text-indigo-400"></i> About Me
+            </h2>
+            <div class="glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-bl-full -z-10"></div>
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+                    I am an Information Technology student with a strong drive to build innovative academic projects. 
+                    I thrive on continuously improving my technical skill set and exploring new technologies. 
+                    My primary areas of interest lie in <strong>software development</strong> and the intricate world of <strong>cybersecurity</strong>. 
+                    I am eager to leverage my academic foundation to solve real-world problems and contribute to secure, efficient tech solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (Tiled) -->
+    <section id="skills" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-heading">
+                <i class="ph-duotone ph-lightning text-brand dark:text-indigo-400"></i> Tech Arsenal
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill Card 1 -->
+                <div class="glass-card rounded-2xl p-6 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-6 text-blue-600 dark:text-blue-400">
+                        <i class="ph ph-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-slate-800 dark:text-white">Programming Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">Python</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">C</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">C++</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">SQL</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="glass-card rounded-2xl p-6 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center mb-6 text-orange-600 dark:text-orange-400">
+                        <i class="ph ph-browsers text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-slate-800 dark:text-white">Web Technologies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">HTML5</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">CSS3</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">API Integration</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="glass-card rounded-2xl p-6 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mb-6 text-emerald-600 dark:text-emerald-400">
+                        <i class="ph ph-shield-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-slate-800 dark:text-white">Concepts & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">Cybersecurity</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">GitHub</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg font-medium">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (Cards) -->
+    <section id="projects" class="py-24 px-6 bg-white dark:bg-slate-800/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-heading">
+                <i class="ph-duotone ph-folder-open text-brand dark:text-indigo-400"></i> Featured Projects
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-2xl p-8 group hover:border-brand/50 dark:hover:border-indigo-500/50 transition-colors">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-brand/10 dark:bg-indigo-500/20 rounded-lg text-brand dark:text-indigo-400">
+                            <i class="ph ph-credit-card text-3xl"></i>
+                        </div>
+                        <a href="#" class="text-slate-400 hover:text-brand dark:hover:text-indigo-400 transition-colors">
+                            <i class="ph ph-arrow-up-right text-2xl"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-brand dark:group-hover:text-indigo-400 transition-colors">
+                        Secure Mini Payment API
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-3">
+                        Developed a robust web-based payment API featuring secure authentication and seamless database integration. The project heavily focused on backend architectural structure and implementing fundamental security protocols.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">API</span>
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Security</span>
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Database</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl p-8 group hover:border-brand/50 dark:hover:border-indigo-500/50 transition-colors">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-purple-100 dark:bg-purple-500/20 rounded-lg text-purple-600 dark:text-purple-400">
+                            <i class="ph ph-brain text-3xl"></i>
+                        </div>
+                        <a href="#" class="text-slate-400 hover:text-brand dark:hover:text-indigo-400 transition-colors">
+                            <i class="ph ph-arrow-up-right text-2xl"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-brand dark:group-hover:text-indigo-400 transition-colors">
+                        Bloom’s Taxonomy Learning Model
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-3">
+                        An academic mini-project built entirely around the Bloom’s Taxonomy framework. Designed structured, hierarchical learning levels aimed at significantly enhancing user understanding, analysis, and critical thinking skills.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Education Tech</span>
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Modeling</span>
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (Tiles) -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-heading">
+                <i class="ph-duotone ph-address-book text-brand dark:text-indigo-400"></i> Get In Touch
+            </h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                
+                <!-- Email Tile -->
+                <a href="mailto:pavathaariniarunachalam13@gmail.com" class="glass-card p-6 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:border-brand/50 transition-all group">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i class="ph-fill ph-envelope-simple text-xl"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-1">Email</p>
+                        <p class="text-slate-800 dark:text-slate-200 font-semibold truncate">pavathaariniarunachalam13@gmail.com</p>
+                    </div>
+                </a>
+
+                <!-- Phone Tile -->
+                <a href="tel:9361891375" class="glass-card p-6 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:border-brand/50 transition-all group">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i class="ph-fill ph-phone text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-1">Phone</p>
+                        <p class="text-slate-800 dark:text-slate-200 font-semibold">+91 9361891375</p>
+                    </div>
+                </a>
+
+                <!-- Location Tile -->
+                <div class="glass-card p-6 rounded-2xl flex items-center gap-4 hover:-translate-y-1 transition-all group">
+                    <div class="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i class="ph-fill ph-map-pin text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-1">Location</p>
+                        <p class="text-slate-800 dark:text-slate-200 font-semibold">Parivakam, Chennai</p>
+                    </div>
+                </div>
+
+                <!-- LinkedIn Tile -->
+                <a href="https://www.linkedin.com/in/pavaatharini-a-aaaa00297" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:border-brand/50 transition-all group">
+                    <div class="w-12 h-12 bg-[#0A66C2]/10 dark:bg-[#0A66C2]/20 text-[#0A66C2] dark:text-[#60A5FA] rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i class="ph-fill ph-linkedin-logo text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-1">LinkedIn</p>
+                        <p class="text-slate-800 dark:text-slate-200 font-semibold">Pavathaarini A</p>
+                    </div>
+                </a>
+
+                <!-- GitHub Tile -->
+                <a href="https://github.com/pava-13" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:border-brand/50 transition-all group lg:col-span-2 sm:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i class="ph-fill ph-github-logo text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-1">GitHub</p>
+                        <p class="text-slate-800 dark:text-slate-200 font-semibold">github.com/pava-13</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <p class="text-slate-500 dark:text-slate-400 font-medium">
+            © <script>document.write(new Date().getFullYear())</script> Pavathaarini A. All rights reserved.
         </p>
-    </div>
-</section>
-
-<section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <div class="card">
-        <p><strong>Languages:</strong> Python, C, C++, SQL, HTML, CSS</p>
-        <p><strong>Frameworks:</strong> Cybersecurity Concepts</p>
-        <p><strong>Tools:</strong> Github</p>
-    </div>
-</section>
-
-<section id="projects">
-    <h2 class="section-title">Projects</h2>
-
-    <div class="card">
-        <h3>Secure Mini Payment API</h3>
-        <p>
-            Developed a web-based payment API with authentication
-            and database integration, focusing on backend structure and security.
+        <p class="text-sm text-slate-400 dark:text-slate-500 mt-2">
+            Built with modern web technologies.
         </p>
-    </div>
+    </footer>
 
-    <div class="card">
-        <h3>Bloom’s Taxonomy Based Learning Model</h3>
-        <p>
-            Academic mini project based on Bloom’s Taxonomy framework.
-            Designed structured learning levels to enhance understanding,
-            analysis, and critical thinking skills.
-        </p>
-    </div>
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const htmlElement = document.documentElement;
 
-</section>
+        // Check for saved theme preference or default to light
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add('dark');
+            updateIcons('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+            updateIcons('light');
+        }
 
-<section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <div class="card">
-        <p><strong>Phone:</strong> 9361891375</p>
-        <p><strong>Email:</strong> pavathaariniarunachalam13@gmail.com</p>
-        <p><strong>Address:Parivakam,Chennai,Tamil Nadu</p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/pava-13" target="_blank">github.com/pava-13</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pavaatharini-a-aaaa00297" target="_blank">linkedin.com/in/pavaatharini-a</a></p>
-       
-    </div>
-</section>
+        function updateIcons(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.replace('ph-moon', 'ph-sun');
+                themeIconMobile.classList.replace('ph-moon', 'ph-sun');
+            } else {
+                themeIcon.classList.replace('ph-sun', 'ph-moon');
+                themeIconMobile.classList.replace('ph-sun', 'ph-moon');
+            }
+        }
 
-<footer>
-    © 2026 Pavathaarini A | College Portfolio
-</footer>
+        function toggleTheme() {
+            htmlElement.classList.toggle('dark');
+            const isDark = htmlElement.classList.contains('dark');
+            
+            if (isDark) {
+                localStorage.setItem('theme', 'dark');
+                updateIcons('dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+                updateIcons('light');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleBtnMobile.addEventListener('click', toggleTheme);
+    </script>
 
 </body>
 </html>
